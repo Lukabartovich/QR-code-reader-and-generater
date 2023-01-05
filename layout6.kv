@@ -1,0 +1,178 @@
+<Home>:
+    GridLayout:
+        cols: 1
+
+        padding: 30
+        spacing: 10
+
+        Button:
+            text: 'scan QR codes'
+            on_press: root.scan()
+
+        Button:
+            text: 'generate QR codes'
+            on_press: root.generate()
+
+<Scan>:
+    GridLayout:
+        cols: 1
+        padding: 10
+        spacing: 10
+
+        GridLayout:
+            cols: 5
+            size_hint_y: 0.05
+
+            Button:
+                text: 'back'
+                on_press: root.back()
+
+            Label:
+                text: ''
+            Label:
+                text: ''
+            Label:
+                text: ''
+            Label:
+                text: ''
+
+
+        Camera:
+            id: camera
+            resolution: (640, 480)
+            play: False
+            opacity: 0
+            size_hint_y: 0.75
+
+        Button:
+            text: 'start'
+            on_press: root.start()
+            size_hint_y: 0.1
+
+        Button:
+            text: 'scan'
+            on_press: root.capture()
+            size_hint_y: 0.1
+
+<Result>:
+    GridLayout:
+        cols: 1
+        padding: 30
+        spacing: 10
+
+        Label:
+            id: result_label
+            text: ''
+        Button:
+            text: 'back'
+            on_press: root.back()
+
+<Generate>:
+    GridLayout:
+
+        cols: 1
+        padding: 30
+        spacing: 10
+
+        Label:
+            text: 'pass here what to pass in QR code'
+
+        TextInput:
+            id: input
+
+        Button:
+            text: 'generate'
+            on_press: root.generate()
+
+<QR>:
+    GridLayout:
+        cols: 1
+        padding: 30
+        spacing: 10
+
+        GridLayout:
+            cols: 5
+            size_hint_y: 0.05
+
+            Button:
+                text: 'back'
+                on_press: root.back()
+
+            Label:
+                text: ''
+            Label:
+                text: ''
+            Label:
+                text: ''
+            Label:
+                text: ''
+
+        Image:
+            id: qr
+            source: ''
+            size_hint_y: 0.6
+        Button:
+            text: 'send'
+            size_hint_y: 0.35
+            on_press: root.send()
+
+<Send>:
+    GridLayout:
+        cols: 1
+        padding: 30
+        spacing: 10
+
+        GridLayout:
+            cols: 2
+            size_hint_y: 0.2
+
+            Label:
+                text: 'enter\n email'
+                size_hint_x: 0.3
+
+            TextInput:
+                id: email
+                size_hint_x: 0.7
+
+        Label:
+            text: ''
+            size_hint_y: 0.6
+
+        Button:
+            text: 'send'
+            on_press: root.send()
+            size_hint_y: 0.2
+
+
+
+<Root>:
+    canvas.before:
+        Color:
+            rgba: (0.53, 0.33, 0.54, 1)
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+    Home:
+        id: home
+        name: 'home'
+
+    Scan:
+        id: scan
+        name: 'scan'
+
+    Result:
+        id: result
+        name: 'result'
+
+    Generate:
+        id: generate
+        name: 'generate'
+
+    QR:
+        id: qr
+        name: 'qr'
+
+    Send:
+        id: send
+        name: 'send'
