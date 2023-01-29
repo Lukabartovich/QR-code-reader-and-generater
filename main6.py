@@ -1,6 +1,7 @@
 import qrcode
 import yagmail
 import random
+import os
 from time import strftime
 
 import cv2
@@ -70,6 +71,7 @@ class Generate(Screen):
     def make(self, i):
         qr = qrcode.make(i)
         self.filename = strftime('%Y%Y%m%d-%H%M%S')
+        os.mkdir('qrs')
         qr.save(f'qrs/{self.filename}.jpeg')
 
     def generate(self):
